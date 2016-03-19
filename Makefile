@@ -1,5 +1,3 @@
-.SUFFIXES: .rb .ui
-
 GTEST=/usr/src/gtest
 GMOCK=/usr/src/gmock
 CXX = g++
@@ -7,7 +5,7 @@ RSPEC = rspec
 RBUIC = rbuic4
 RM_F = rm -f
 
-all: all-recursive gui
+all: all-recursive
 
 check: check-controller check-gui
 
@@ -16,8 +14,6 @@ check-controller: test-suite
 
 check-gui: gui
 	$(RSPEC)
-
-gui: ui_mearmwidget.rb
 
 upload:
 	cd arduino && $(MAKE) upload && cd ..
@@ -47,6 +43,3 @@ all-recursive:
 
 clean-recursive:
 	cd arduino && $(MAKE) clean && cd ..
-
-ui_%.rb: %.ui
-	$(RBUIC) -o $@ $<
