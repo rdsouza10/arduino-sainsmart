@@ -7,8 +7,10 @@
 const int BASE     = 0;
 const int SHOULDER = 1;
 const int ELBOW    = 2;
-const int GRIPPER  = 3;
-const int DRIVES   = 4;
+const int ROLL     = 3;
+const int PITCH    = 4;
+const int WRIST    = 5;
+const int DRIVES   = 6;
 
 class ControllerBase
 {
@@ -21,12 +23,16 @@ public:
   Path &curve(int drive) { return m_curve[drive]; }
   int drive(char c) {
     switch (tolower(c)) {
-    case 'e':
-      return ELBOW;
     case 's':
       return SHOULDER;
-    case 'g':
-      return GRIPPER;
+    case 'e':
+      return ELBOW;
+    case 'r':
+      return ROLL;
+    case 'p':
+      return PITCH;
+    case 'w':
+      return WRIST;
     default:
       return BASE;
     };
@@ -49,24 +55,6 @@ public:
   float clipAngle(int drive, float value) {
     return pwmToAngle(drive, clipPWM(drive, angleToPWM(drive, value)));
   }
-  float limitJoint(float value, float other) {
-    return limit(value, -45 - other, 45 - other);
-  }
-  float limitArmAngle(int drive, float value)
-  {
-    switch (drive) {
-    case ELBOW:
-      return limitJoint(value, target(SHOULDER));
-    case SHOULDER:
-      return limitJoint(value, target(ELBOW));
-    default:
-      return value;
-    };
-  }
-  float limitElbowAngle(int drive, float value, float shoulder)
-  {
-    return drive == ELBOW ? limitJoint(value, shoulder) : value;
-  }
   void saveTeachPoint(int index) {
     for (int i=0; i<DRIVES; i++)
       m_teach[index][i] = target(i);
@@ -75,11 +63,12 @@ public:
     targetPoint(m_teach[index]);
   }
   void displayTeachPoint(int index) {
-    reportTeachPoint(m_teach[index][0], m_teach[index][1], m_teach[index][2], m_teach[index][3]);
+    reportTeachPoint(m_teach[index][0], m_teach[index][1], m_teach[index][2],
+                     m_teach[index][3], m_teach[index][4], m_teach[index][5]);
   }
   void takeConfigurationValue(void) {
-    if (m_index < 4) {
-      float angle = limitElbowAngle(m_index, clipAngle(m_index, number()), m_configuration[SHOULDER]);
+    if (m_index < DRIVES) {
+      float angle = clipAngle(m_index, number());
       m_configuration[m_index] = angle;
       m_index++;
     };
@@ -100,11 +89,11 @@ public:
     m_curve[drive].retarget(angle, time);
   }
   void targetPWM(int drive, float pwm) {
-    float angle = limitArmAngle(drive, pwmToAngle(drive, clipPWM(drive, pwm)));
+    float angle = pwmToAngle(drive, clipPWM(drive, pwm));
     targetAngleUnsafe(drive, angle, timeRequired(drive, angle));
   }
   void targetAngle(int drive, float value) {
-    float angle = limitArmAngle(drive, clipAngle(drive, value));
+    float angle = clipAngle(drive, value);
     targetAngleUnsafe(drive, angle, timeRequired(drive, angle));
   }
   void targetPoint(float point[])
@@ -155,7 +144,7 @@ public:
       m_teachFun = NULL;
     } else {
       switch (c) {
-      case 'r':
+      case 'o':
         reportReady(drivesReady());
         resetParser();
         break;
@@ -179,13 +168,17 @@ public:
         m_fraction = 0;
         break;
       case 'b':
-      case 'e':
-      case 's':
-      case 'g':
       case 'B':
+      case 'e':
       case 'E':
+      case 's':
       case 'S':
-      case 'G':
+      case 'r':
+      case 'R':
+      case 'p':
+      case 'P':
+      case 'w':
+      case 'W':
         if (hasNumber()) {
           if (isupper(c))
             targetPWM(drive(c), number());
@@ -218,7 +211,7 @@ public:
       case 'm':
         m_teachFun = &ControllerBase::saveTeachPoint;
         break;
-      case 'p':
+      case 'd':
         m_teachFun = &ControllerBase::displayTeachPoint;
         break;
       case ' ':
@@ -229,21 +222,26 @@ public:
           takeConfigurationValue();
           targetPoint(m_configuration);
         } else
-          reportConfiguration(m_curve[0].pos(), m_curve[1].pos(), m_curve[2].pos(), m_curve[3].pos());
+          reportConfiguration(m_curve[0].pos(), m_curve[1].pos(), m_curve[2].pos(),
+                              m_curve[3].pos(), m_curve[4].pos(), m_curve[5].pos());
         resetParser();
         break;
       case 'l':
         reportLower((lower(0) - offset(0)) / resolution(0),
                     (lower(1) - offset(1)) / resolution(1),
                     (lower(2) - offset(2)) / resolution(2),
-                    (lower(3) - offset(3)) / resolution(3));
+                    (lower(3) - offset(3)) / resolution(3),
+                    (lower(4) - offset(4)) / resolution(4),
+                    (lower(5) - offset(5)) / resolution(5));
         resetParser();
         break;
       case 'u':
         reportUpper((upper(0) - offset(0)) / resolution(0),
                     (upper(1) - offset(1)) / resolution(1),
                     (upper(2) - offset(2)) / resolution(2),
-                    (upper(3) - offset(3)) / resolution(3));
+                    (upper(3) - offset(3)) / resolution(3),
+                    (upper(4) - offset(4)) / resolution(4),
+                    (upper(5) - offset(5)) / resolution(5));
         resetParser();
         break;
       default:
@@ -260,10 +258,10 @@ public:
   virtual void reportRequired(float time) = 0;
   virtual void reportAngle(float) = 0;
   virtual void reportPWM(int) = 0;
-  virtual void reportConfiguration(float, float, float, float) = 0;
-  virtual void reportLower(float, float, float, float) = 0;
-  virtual void reportUpper(float, float, float, float) = 0;
-  virtual void reportTeachPoint(float, float, float, float) = 0;
+  virtual void reportConfiguration(float, float, float, float, float, float) = 0;
+  virtual void reportLower(float, float, float, float, float, float) = 0;
+  virtual void reportUpper(float, float, float, float, float, float) = 0;
+  virtual void reportTeachPoint(float, float, float, float, float, float) = 0;
   virtual void writePWM(int, int) = 0;
 protected:
   float m_number;
@@ -272,7 +270,7 @@ protected:
   void (ControllerBase::*m_teachFun)(int);
   float m_teach[12][DRIVES];
   int m_index;
-  float m_configuration[4];
+  float m_configuration[DRIVES];
   Path m_curve[DRIVES];
 };
 
