@@ -1,19 +1,14 @@
 GTEST=/usr/src/gtest
 GMOCK=/usr/src/gmock
 CXX = g++
-RSPEC = rspec
-RBUIC = rbuic4
 RM_F = rm -f
 
 all: all-recursive
 
-check: check-controller check-gui
+check: check-controller
 
 check-controller: test-suite
 	./test-suite
-
-check-gui: gui
-	$(RSPEC)
 
 upload:
 	cd arduino && $(MAKE) upload && cd ..

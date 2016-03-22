@@ -55,6 +55,20 @@ public:
   float clipAngle(int drive, float value) {
     return pwmToAngle(drive, clipPWM(drive, angleToPWM(drive, value)));
   }
+  float limitJoint(float value, float other) {
+    return limit(value, -45 - other, 45 - other);
+  }
+  float limitArmAngle(int drive, float value)
+  {
+    switch (drive) {
+    case ELBOW:
+      return limitJoint(value, target(SHOULDER));
+    case SHOULDER:
+      return limitJoint(value, target(ELBOW));
+    default:
+      return value;
+    };
+  }
   void saveTeachPoint(int index) {
     for (int i=0; i<DRIVES; i++)
       m_teach[index][i] = target(i);
@@ -89,11 +103,11 @@ public:
     m_curve[drive].retarget(angle, time);
   }
   void targetPWM(int drive, float pwm) {
-    float angle = pwmToAngle(drive, clipPWM(drive, pwm));
+    float angle = limitArmAngle(drive, pwmToAngle(drive, clipPWM(drive, pwm)));
     targetAngleUnsafe(drive, angle, timeRequired(drive, angle));
   }
   void targetAngle(int drive, float value) {
-    float angle = clipAngle(drive, value);
+    float angle = limitArmAngle(drive, clipAngle(drive, value));
     targetAngleUnsafe(drive, angle, timeRequired(drive, angle));
   }
   void targetPoint(float point[])
