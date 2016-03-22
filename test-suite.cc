@@ -299,7 +299,7 @@ TEST_F(ControllerTest, TargetBasePWMLowerLimit) {
 
 TEST_F(ControllerTest, TargetShoulderPWMLimitAgainstElbow) {
   send("2400S");
-  EXPECT_GE(35, m_controller.curve(SHOULDER).target());
+  EXPECT_GE(40, m_controller.curve(SHOULDER).target());
 }
 
 TEST_F(ControllerTest, RetargetNegativeNumber) {
@@ -411,31 +411,31 @@ TEST_F(ControllerTest, UseBase) {
 
 TEST_F(ControllerTest, RestrictElbow) {
   m_controller.curve(SHOULDER).stop(0);
-  EXPECT_EQ( 45, m_controller.limitArmAngle(ELBOW,  70));
-  EXPECT_EQ(-45, m_controller.limitArmAngle(ELBOW, -70));
+  EXPECT_EQ( 60, m_controller.limitArmAngle(ELBOW,  70));
+  EXPECT_EQ(-60, m_controller.limitArmAngle(ELBOW, -70));
 }
 
 TEST_F(ControllerTest, RestrictElbowRelativeToShoulder) {
 
-  EXPECT_EQ( 55, m_controller.limitArmAngle(ELBOW, 70));
-  EXPECT_EQ(-35, m_controller.limitArmAngle(ELBOW,-70));
+  EXPECT_EQ( 70, m_controller.limitArmAngle(ELBOW, 90));
+  EXPECT_EQ(-50, m_controller.limitArmAngle(ELBOW,-90));
 }
 
 TEST_F(ControllerTest, UseElbowRestriction) {
-  send("70e");
-  EXPECT_EQ(55, m_controller.curve(ELBOW).target());
+  send("90e");
+  EXPECT_EQ(70, m_controller.curve(ELBOW).target());
 }
 
 TEST_F(ControllerTest, RestrictShoulder) {
   m_controller.curve(ELBOW).stop(0);
-  EXPECT_EQ( 45, m_controller.limitArmAngle(SHOULDER, 70));
-  EXPECT_EQ(-45, m_controller.limitArmAngle(SHOULDER,-70));
+  EXPECT_EQ( 60, m_controller.limitArmAngle(SHOULDER, 70));
+  EXPECT_EQ(-60, m_controller.limitArmAngle(SHOULDER,-70));
 }
 
 TEST_F(ControllerTest, RestrictShoulderRelativeToElbow) {
   m_controller.curve(ELBOW).stop(-20);
-  EXPECT_EQ( 65, m_controller.limitArmAngle(SHOULDER, 70));
-  EXPECT_EQ(-25, m_controller.limitArmAngle(SHOULDER,-70));
+  EXPECT_EQ( 80, m_controller.limitArmAngle(SHOULDER, 90));
+  EXPECT_EQ(-40, m_controller.limitArmAngle(SHOULDER,-90));
 }
 
 TEST_F(ControllerTest, UpdateInformsServos) {

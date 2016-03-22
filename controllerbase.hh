@@ -12,6 +12,8 @@ const int PITCH    = 4;
 const int WRIST    = 5;
 const int DRIVES   = 6;
 
+const float ELBOW_RANGE = 60;
+
 class ControllerBase
 {
 public:
@@ -56,7 +58,7 @@ public:
     return pwmToAngle(drive, clipPWM(drive, angleToPWM(drive, value)));
   }
   float limitJoint(float value, float other) {
-    return limit(value, -45 - other, 45 - other);
+    return limit(value, -ELBOW_RANGE - other, ELBOW_RANGE - other);
   }
   float limitArmAngle(int drive, float value)
   {
