@@ -2,6 +2,9 @@
 #include "../calibration.hh"
 #include "../controllerbase.hh"
 
+
+// Humble Object connecting device to tested code http://xunitpatterns.com/Humble%20Object.html
+
 class Controller: public ControllerBase
 {
 public:
