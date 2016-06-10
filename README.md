@@ -97,5 +97,12 @@ You can exit the *screen* terminal using Ctrl-A \\.
 
 **Warning: self-collisions of the robot can damage the servos!**
 
+# External links
+
+* [Arduino][1]
+* [Sainsmart DIY 6-axis palletizing robot arm][2]
+* [7bot robot arm][3]
+
 [1]: https://www.arduino.cc/
 [2]: http://www.sainsmart.com/diy-6-axis-servos-control-palletizing-robot-arm-model-for-arduino-uno-mega2560.html
+[3]: http://7bot.cc/
