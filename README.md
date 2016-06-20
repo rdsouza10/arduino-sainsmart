@@ -43,9 +43,9 @@ The upload target will upload the program via */dev/ttyUSB0* to the *Arduino* bo
 make upload
 ```
 
-**Warning: programm the board before connecting the servos the first time to prevent erratic motion!**
+**Warning: program the board before connecting the servos the first time to prevent erratic motion!**
 
-**Warning: connect the servo power before connecting the Arduino to prevent the board power from stalling!**
+**Warning: once servos are plugged into the board, always connect the servo power before connecting the Arduino to prevent the board power from stalling!**
 
 ## control robot
 
