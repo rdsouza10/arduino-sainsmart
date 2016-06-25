@@ -2,7 +2,7 @@
 
 [Arduino][1] software to steer the SainSmart [DIY 6-axis palletizing robot arm][2].
 
-[![SainSmart 6-axis servo steering](https://i1.ytimg.com/vi/aDO8VPw8tZ8/hqdefault.jpg)](https://www.youtube.com/watch?v=aDO8VPw8tZ8)
+[![SainSmart 6-axis servo steering](https://i1.ytimg.com/vi/_QJ1kuwu9l4/hqdefault.jpg)](https://www.youtube.com/watch?v=_QJ1kuwu9l4)
 
 ## build
 
