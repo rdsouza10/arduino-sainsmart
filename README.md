@@ -99,10 +99,12 @@ You can exit the *screen* terminal using Ctrl-A \\.
 
 # External links
 
-* [Arduino][1]
 * [Sainsmart DIY 6-axis palletizing robot arm][2]
+* [Arduino][1]
+* [DFRobot IO expansion shield for Arduino][4]
 * [7bot robot arm][3]
 
 [1]: https://www.arduino.cc/
 [2]: http://www.sainsmart.com/diy-6-axis-servos-control-palletizing-robot-arm-model-for-arduino-uno-mega2560.html
 [3]: http://7bot.cc/
+[4]: https://robosavvy.com/store/dfrobot-io-expansion-shield-for-arduino-v6.html
