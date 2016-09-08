@@ -1,6 +1,6 @@
 # arduino-sainsmart[![](https://img.shields.io/circleci/project/wedesoft/arduino-sainsmart/master.png)](https://circleci.com/gh/wedesoft/arduino-sainsmart)
 
-[Arduino][1] software to steer the SainSmart [DIY 6-axis palletizing robot arm][2].
+[Arduino][1] software to steer the SainSmart [DIY 6-axis palletizing robot arm][2] using smooth Bernstein polynomials.
 
 [![SainSmart 6-axis servo steering](https://i1.ytimg.com/vi/_QJ1kuwu9l4/hqdefault.jpg)](https://www.youtube.com/watch?v=_QJ1kuwu9l4)
 
@@ -96,6 +96,10 @@ Examples of servo commands are:
 You can exit the *screen* terminal using Ctrl-A \\.
 
 **Warning: self-collisions of the robot can damage the servos!**
+
+# Credits
+
+Thanks to Ian Patient for pointing out the Bernstein polynomials for achieving smooth robot motion.
 
 # External links
 
