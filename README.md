@@ -103,6 +103,7 @@ You can exit the *screen* terminal using Ctrl-A \\.
 * [Arduino][1]
 * [Redboard][5]
 * [DFRobot IO expansion shield for Arduino][4]
+* [6V DC/3A power supply][6]
 * [7bot robot arm][3]
 
 [1]: https://www.arduino.cc/
@@ -110,3 +111,4 @@ You can exit the *screen* terminal using Ctrl-A \\.
 [3]: http://7bot.cc/
 [4]: https://robosavvy.com/store/dfrobot-io-expansion-shield-for-arduino-v6.html
 [5]: https://learn.sparkfun.com/tutorials/redboard-vs-uno
+[6]: http://uk.rs-online.com/web/p/plug-in-power-supply/7424762/
