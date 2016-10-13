@@ -4,6 +4,8 @@
 
 [![SainSmart 6-axis servo steering](https://i1.ytimg.com/vi/_QJ1kuwu9l4/hqdefault.jpg)](https://www.youtube.com/watch?v=_QJ1kuwu9l4)
 
+[![SainsSmart 6-axis robot arm](6axis-size.jpg)][2]
+
 ## build
 
 Install the dependencies as follows:
