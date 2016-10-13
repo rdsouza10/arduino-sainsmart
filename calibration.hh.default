@@ -3,7 +3,7 @@
 
 // BASE, SHOULDER, ELBOW, ROLL, PITCH, WRIST (see in controllerbase.hh)
 const int SERVOPIN[] = {11, 10, 9, 8, 7, 6};
-const int OFFSET[] = {1471, 1494, 716, 1491, 1385, 1444};// normally around 1500 except for elbow
+const int OFFSET[] = {1471, 1494, 716, 1240, 1385, 1444};// normally around 1500 except for elbow
 
 #warning "Adjust these values for your robot to avoid self-collisions!"
 #warning "Control your robot carefully until you have inserted appropriate boundaries here!"
