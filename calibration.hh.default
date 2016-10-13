@@ -1,7 +1,7 @@
 #ifndef __CALIBRATION_HH
 #define __CALIBRATION_HH
 
-// BASE, SHOULDER, ELBOW, ROLL, PITCH, WRIST (see in controllerbase.hh)
+// BASE, SHOULDER, ELBOW, ROLL, PITCH, WRIST (defined in controllerbase.hh)
 const int SERVOPIN[] = {11, 10, 9, 8, 7, 6};
 const int OFFSET[] = {1471, 1494, 716, 1240, 1385, 1444};// normally around 1500 except for elbow
 
