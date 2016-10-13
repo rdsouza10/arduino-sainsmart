@@ -103,7 +103,7 @@ Thanks to Ian Patient for pointing out the Bernstein polynomials for achieving s
 
 # External links
 
-* [Sainsmart DIY 6-axis palletizing robot arm][2]
+* [Sainsmart DIY 6-axis palletizing robot arm][2] (also see [Sainsmart Wiki][11])
 * [Arduino][1]
 * [Redboard][5]
 * [DFRobot IO expansion shield for Arduino][4]
@@ -123,3 +123,4 @@ Thanks to Ian Patient for pointing out the Bernstein polynomials for achieving s
 [8]: http://www.hobbyking.com/hobbyking/store/__6221__Towerpro_MG996R_10kg_Servo_10kg_0_20sec_55g.html
 [9]: http://www.servodatabase.com/servo/towerpro/sg90
 [10]: http://www.maplin.co.uk/p/21-x-55mm-dc-socket-plastic-ft96e
+[11]: http://wiki.sainsmart.com/index.php/DIY_6-Axis_Servos_Control_Palletizing_Robot_Arm_Model_for_Arduino_UNO_MEGA2560
