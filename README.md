@@ -108,6 +108,7 @@ Thanks to Ian Patient for pointing out the Bernstein polynomials for achieving s
 * [Redboard][5]
 * [DFRobot IO expansion shield for Arduino][4]
 * [6V DC/3A power supply][6]
+* [2.1 x 5.5mm DC Socket][10]
 * [Sparkfun USB Mini-B cable][7]
 * [Towerpro MG996R servo][8]
 * [Towerpro SG90 9g servo][9]
@@ -121,3 +122,4 @@ Thanks to Ian Patient for pointing out the Bernstein polynomials for achieving s
 [7]: https://robosavvy.com/store/sparkfun-usb-mini-b-cable-6-foot-1140.html
 [8]: http://www.hobbyking.com/hobbyking/store/__6221__Towerpro_MG996R_10kg_Servo_10kg_0_20sec_55g.html
 [9]: http://www.servodatabase.com/servo/towerpro/sg90
+[10]: http://www.maplin.co.uk/p/21-x-55mm-dc-socket-plastic-ft96e
