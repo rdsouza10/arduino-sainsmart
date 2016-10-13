@@ -109,6 +109,8 @@ Thanks to Ian Patient for pointing out the Bernstein polynomials for achieving s
 * [DFRobot IO expansion shield for Arduino][4]
 * [6V DC/3A power supply][6]
 * [Sparkfun USB Mini-B cable][7]
+* [Towerpro MG996R servo][8]
+* [Turnigy TG9e servo][9]
 
 [1]: https://www.arduino.cc/
 [2]: http://www.sainsmart.com/diy-6-axis-servos-control-palletizing-robot-arm-model-for-arduino-uno-mega2560.html
@@ -117,3 +119,5 @@ Thanks to Ian Patient for pointing out the Bernstein polynomials for achieving s
 [5]: https://learn.sparkfun.com/tutorials/redboard-vs-uno
 [6]: http://uk.rs-online.com/web/p/plug-in-power-supply/7424762/
 [7]: https://robosavvy.com/store/sparkfun-usb-mini-b-cable-6-foot-1140.html
+[8]: http://www.hobbyking.com/hobbyking/store/__6221__Towerpro_MG996R_10kg_Servo_10kg_0_20sec_55g.html
+[9]: http://www.servodatabase.com/servo/turnigy/tg9e
