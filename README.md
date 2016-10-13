@@ -110,7 +110,7 @@ Thanks to Ian Patient for pointing out the Bernstein polynomials for achieving s
 * [6V DC/3A power supply][6]
 * [Sparkfun USB Mini-B cable][7]
 * [Towerpro MG996R servo][8]
-* [Towerpro SG90 servo][9]
+* [Towerpro SG90 9g servo][9]
 
 [1]: https://www.arduino.cc/
 [2]: http://www.sainsmart.com/diy-6-axis-servos-control-palletizing-robot-arm-model-for-arduino-uno-mega2560.html
