@@ -51,7 +51,7 @@ make upload
 
 ## control robot
 
-You can control the robot using the *screen* serial terminal:
+You can control the robot using the *screen* serial terminal (make sure *ttyUSB0* is the correct port):
 
 ```
 screen /dev/ttyUSB0 115200
