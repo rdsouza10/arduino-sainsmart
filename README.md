@@ -114,6 +114,7 @@ Thanks to Ian Patient for pointing out the Bernstein polynomials for achieving s
 * [Sparkfun USB Mini-B cable][7]
 * [Towerpro MG996R servo][8]
 * [Towerpro SG90 9g servo][9]
+* [Arduino multitasking part 1][12], [part 2][13], [part 3][14]
 
 [1]: https://www.arduino.cc/
 [2]: http://www.sainsmart.com/diy-6-axis-servos-control-palletizing-robot-arm-model-for-arduino-uno-mega2560.html
@@ -126,3 +127,6 @@ Thanks to Ian Patient for pointing out the Bernstein polynomials for achieving s
 [9]: http://www.servodatabase.com/servo/towerpro/sg90
 [10]: http://www.maplin.co.uk/p/21-x-55mm-dc-socket-plastic-ft96e
 [11]: http://wiki.sainsmart.com/index.php/DIY_6-Axis_Servos_Control_Palletizing_Robot_Arm_Model_for_Arduino_UNO_MEGA2560
+[12]: https://learn.adafruit.com/multi-tasking-the-arduino-part-1/
+[13]: https://learn.adafruit.com/multi-tasking-the-arduino-part-2/
+[14]: https://learn.adafruit.com/multi-tasking-the-arduino-part-3/
