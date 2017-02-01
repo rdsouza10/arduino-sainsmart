@@ -2,7 +2,7 @@
 
 [Arduino][1] software to steer the SainSmart [DIY 6-axis palletizing robot arm][2] using smooth Bernstein polynomials.
 
-[![SainSmart 6-axis servo steering](https://i1.ytimg.com/vi/_QJ1kuwu9l4/hqdefault.jpg)](https://www.youtube.com/watch?v=_QJ1kuwu9l4)
+[![SainSmart 6-axis servo steering](https://i1.ytimg.com/vi/_QJ1kuwu9l4/hqdefault.jpg)][vid]
 
 [![SainsSmart 6-axis robot arm](6axis-size.jpg)][2]
 
@@ -106,7 +106,7 @@ Thanks to Ian Patient for pointing out the Bernstein polynomials for achieving s
 # External links
 
 * [Sainsmart DIY 6-axis palletizing robot arm][2] (also see [Sainsmart Wiki][11])
-* [Sunfounder Standard Gripper Kit Rollpaw for Robotic Arm][15]
+* [Sunfounder Standard Gripper Kit Rollpaw for Robotic Arm][15] ([gripper installation instructions][16])
 * [Arduino][1]
 * [Redboard][5]
 * [DFRobot IO expansion shield for Arduino][4]
@@ -132,3 +132,5 @@ Thanks to Ian Patient for pointing out the Bernstein polynomials for achieving s
 [13]: https://learn.adafruit.com/multi-tasking-the-arduino-part-2/
 [14]: https://learn.adafruit.com/multi-tasking-the-arduino-part-3/
 [15]: https://www.sunfounder.com/rollpaw.html
+[16]: https://www.sunfounder.com/learn/category/Standard-Gripper-Kit-Rollpaw.html
+[vid]: https://www.youtube.com/watch?v=_QJ1kuwu9l4
