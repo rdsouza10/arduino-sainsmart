@@ -73,9 +73,9 @@ Examples of servo commands are:
 * **R**: get roll servo pulse width
 * **P**: get pitch servo pulse width
 * **W**: get wrist servo pulse width
-* *c*: get current configuration (base, shoulder, elbow, roll, pitch, and wrist)
-* *l*: get lower limits for servos
-* *u*: get upper limits for servos
+* **c**: get current configuration (base, shoulder, elbow, roll, pitch, and wrist)
+* **l**: get lower limits for servos
+* **u**: get upper limits for servos
 * **45b**: set base servo angle to 45 degrees
 * **-12.5s**: set shoulder servo angle to -12.5 degrees
 * **10e**: set elbow servo angle to 10 degrees
@@ -107,8 +107,7 @@ Thanks to Ian Patient for pointing out the Bernstein polynomials for achieving s
 
 * [Sainsmart DIY 6-axis palletizing robot arm][2] (also see [Sainsmart Wiki][11])
 * [Sunfounder Standard Gripper Kit Rollpaw for Robotic Arm][15] ([gripper installation instructions][16])
-* [Arduino][1]
-* [Redboard][5]
+* [Redboard][5] ([Arduino][1] compatible board)
 * [DFRobot IO expansion shield for Arduino][4]
 * [6V DC/3A power supply][6]
 * [2.1 x 5.5mm DC Socket][10]
