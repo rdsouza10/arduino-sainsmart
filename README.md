@@ -115,6 +115,7 @@ Thanks to Ian Patient for pointing out the Bernstein polynomials for achieving s
 * [Sparkfun USB Mini-B cable][7]
 * [Towerpro MG996R servo][8]
 * [Towerpro SG90 9g servo][9]
+* [22 AWG RC JR Servo Straight Extension Wire 150mm][17]
 * [Arduino multitasking part 1][12], [part 2][13], [part 3][14]
 
 [1]: https://www.arduino.cc/
@@ -133,4 +134,5 @@ Thanks to Ian Patient for pointing out the Bernstein polynomials for achieving s
 [14]: https://learn.adafruit.com/multi-tasking-the-arduino-part-3/
 [15]: https://www.sunfounder.com/rollpaw.html
 [16]: https://www.sunfounder.com/learn/category/Standard-Gripper-Kit-Rollpaw.html
+[17]: https://www.amazon.co.uk/d/B00P1716VO
 [vid]: https://www.youtube.com/watch?v=_QJ1kuwu9l4
