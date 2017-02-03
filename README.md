@@ -12,6 +12,12 @@
 
 [![6V DC/3A power supply](power-supply.jpg)][6]
 
+[![USB Mini-B cable](usb-mini-b.jpg)][7]
+
+[![2.1 x 5.5mm DC Socket](dc-socket.jpg)][10]
+
+[![JR Servo Extension Wire](jr-servo-wire.jpg)][17]
+
 ## build
 
 Install the dependencies as follows:
@@ -129,7 +135,7 @@ Thanks to Ian Patient for pointing out the Bernstein polynomials for achieving s
 [4]: https://robosavvy.com/store/dfrobot-io-expansion-shield-for-arduino-v6.html
 [5]: https://learn.sparkfun.com/tutorials/redboard-vs-uno
 [6]: http://uk.rs-online.com/web/p/plug-in-power-supply/7424762/
-[7]: https://robosavvy.com/store/sparkfun-usb-mini-b-cable-6-foot-1140.html
+[7]: https://robosavvy.com/store/sparkfun-usb-mini-b-cable-6-foot.html
 [8]: http://www.hobbyking.com/hobbyking/store/__6221__Towerpro_MG996R_10kg_Servo_10kg_0_20sec_55g.html
 [9]: http://www.servodatabase.com/servo/towerpro/sg90
 [10]: http://www.maplin.co.uk/p/21-x-55mm-dc-socket-plastic-ft96e
