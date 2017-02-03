@@ -2,6 +2,8 @@
 
 [Arduino][1] software to steer the SainSmart [DIY 6-axis palletizing robot arm][2] using smooth Bernstein polynomials.
 
+## equipment
+
 [![SainSmart 6-axis servo steering](https://i1.ytimg.com/vi/_QJ1kuwu9l4/hqdefault.jpg)][vid]
 
 [![SainsSmart 6-axis robot arm](6axis-size.jpg)][2]
