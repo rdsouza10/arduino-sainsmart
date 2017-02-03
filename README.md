@@ -6,6 +6,12 @@
 
 [![SainsSmart 6-axis robot arm](6axis-size.jpg)][2]
 
+[![Redboard](redboard.jpg)][5]
+
+[![DFRobot IO expansion shield for Arduino](dfrobot.jpg)][4]
+
+[![6V DC/3A power supply](power-supply.jpg)][6]
+
 ## build
 
 Install the dependencies as follows:
