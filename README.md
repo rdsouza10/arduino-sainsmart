@@ -34,14 +34,16 @@ Create the initial calibration file:
 cp calibration.hh.default calibration.hh
 ```
 
-Note: You might have to change the *BOARD_TAG* in the *arduino/Makefile*.
-See */usr/share/arduino/hardware/arduino/boards.txt* for supported board tags.
+Note: Carefully adjust the limits and offsets for your robot to avoid self-collision.
 
 Then build the Arduino program using *make*:
 
 ```
 make
 ```
+
+Note: You might have to change the *BOARD_TAG* in the *arduino/Makefile*.
+See */usr/share/arduino/hardware/arduino/boards.txt* for supported board tags.
 
 ## test
 
@@ -61,7 +63,7 @@ make upload
 
 **Warning: program the board before connecting the servos the first time to prevent erratic motion!**
 
-**Warning: once servos are plugged into the board, always connect the servo power to the DFRobot I/O expansion shield before connecting the USB cable to the Arduino to prevent the board power from stalling!**
+**Warning: once servos are plugged into the board, always connect the servo power to the DFRobot I/O expansion shield before connecting the USB cable to the Arduino to prevent the board power from stalling which causes erratic motion!**
 
 ## control robot
 
