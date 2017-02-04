@@ -83,12 +83,14 @@ Examples of servo commands are:
 * **r**: get roll servo angle
 * **p**: get pitch servo angle
 * **w**: get wrist servo angle
+* **g**: get gripper servo angle
 * **B**: get base servo pulse width
 * **S**: get shoulder servo pulse width
 * **E**: get elbow servo pulse width
 * **R**: get roll servo pulse width
 * **P**: get pitch servo pulse width
 * **W**: get wrist servo pulse width
+* **G**: get gripper servo pulse width
 * **c**: get current configuration (base, shoulder, elbow, roll, pitch, and wrist)
 * **l**: get lower limits for servos
 * **u**: get upper limits for servos
@@ -98,12 +100,14 @@ Examples of servo commands are:
 * **20r**: set roll servo angle to 20 degrees
 * **30p**: set pitch servo angle to 30 degrees
 * **40w**: set wrist servo angle to 40 degrees
+* **0g**: set gripper servo angle to 0 degrees
 * **2400B**: set base servo pulse width to 2400
 * **1500S**: set shoulder servo pulse width to 1500
 * **720E**: set elbow servo pulse width to 720
 * **1500R**: set roll servo pulse width to 1500
 * **1500P**: set pitch servo pulse width to 1500
 * **1500W**: set wrist servo pulse width to 1500
+* **2000G**: set gripper servo pulse width to 2000
 * **1 2 3 4 5 6c**: set configuration (base, shoulder, elbow, roll, pitch, and wrist) to 1, 2, 3, 4, 5, and 6 degrees
 * **1 2 3 4 5 6t**: time required to reach the specified configuration
 * **ma**: save teach point *a* (there are 12 teach points from *a* to *l*)

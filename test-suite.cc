@@ -205,10 +205,10 @@ public:
   MOCK_METHOD1(reportAngle, void(float));
   MOCK_METHOD1(reportPWM, void(int));
   MOCK_METHOD2(writePWM, void(int,int));
-  MOCK_METHOD6(reportConfiguration, void(float,float,float,float,float,float));
-  MOCK_METHOD6(reportLower, void(float,float,float,float,float,float));
-  MOCK_METHOD6(reportUpper, void(float,float,float,float,float,float));
-  MOCK_METHOD6(reportTeachPoint, void(float,float,float,float,float,float));
+  MOCK_METHOD7(reportConfiguration, void(float,float,float,float,float,float, float));
+  MOCK_METHOD7(reportLower, void(float,float,float,float,float,float, float));
+  MOCK_METHOD7(reportUpper, void(float,float,float,float,float,float, float));
+  MOCK_METHOD7(reportTeachPoint, void(float,float,float,float,float,float, float));
 };
 
 class ControllerTest: public Test {
@@ -220,6 +220,7 @@ public:
     m_controller.curve(ROLL    ).stop( 30);
     m_controller.curve(PITCH   ).stop( 15);
     m_controller.curve(WRIST   ).stop(-20);
+    m_controller.curve(GRIPPER ).stop( 70);
   }
 protected:
   void send(const char *str) {
@@ -404,6 +405,16 @@ TEST_F(ControllerTest, ReportWristPWM) {
   send("W");
 }
 
+TEST_F(ControllerTest, ReportGripper) {
+  EXPECT_CALL(m_controller, reportAngle(70));
+  send("g");
+}
+
+TEST_F(ControllerTest, ReportGripperPWM) {
+  EXPECT_CALL(m_controller, reportPWM(2340));
+  send("G");
+}
+
 TEST_F(ControllerTest, UseBase) {
   EXPECT_EQ(-90, m_controller.limitArmAngle(BASE, -90));
   EXPECT_EQ( 90, m_controller.limitArmAngle(BASE,  90));
@@ -446,6 +457,7 @@ TEST_F(ControllerTest, UpdateInformsServos) {
   EXPECT_CALL(m_controller, writePWM(ROLL    , 1860));
   EXPECT_CALL(m_controller, writePWM(PITCH   , 1680));
   EXPECT_CALL(m_controller, writePWM(WRIST   , 1260));
+  EXPECT_CALL(m_controller, writePWM(GRIPPER , 2340));
   m_controller.update(0);
 }
 
@@ -457,6 +469,7 @@ TEST_F(ControllerTest, UpdateAppliesTargets) {
   EXPECT_CALL(m_controller, writePWM(ROLL    , 1860));
   EXPECT_CALL(m_controller, writePWM(PITCH   , 1680));
   EXPECT_CALL(m_controller, writePWM(WRIST   , 1260));
+  EXPECT_CALL(m_controller, writePWM(GRIPPER , 2340));
   m_controller.update(10);
 }
 
@@ -469,6 +482,7 @@ TEST_F(ControllerTest, StopDrives) {
   EXPECT_CALL(m_controller, writePWM(ROLL    , 1860));
   EXPECT_CALL(m_controller, writePWM(PITCH   , 1680));
   EXPECT_CALL(m_controller, writePWM(WRIST   , 1260));
+  EXPECT_CALL(m_controller, writePWM(GRIPPER , 2340));
   send("x");
   m_controller.update(10);
 }
@@ -487,6 +501,7 @@ TEST_F(ControllerTest, ApproachTeachPoint) {
   EXPECT_CALL(m_controller, writePWM(ROLL    , 1500));
   EXPECT_CALL(m_controller, writePWM(PITCH   , 1500));
   EXPECT_CALL(m_controller, writePWM(WRIST   , 1500));
+  EXPECT_CALL(m_controller, writePWM(GRIPPER , 1500));
   m_controller.update(10);
 }
 
@@ -521,15 +536,16 @@ TEST_F(ControllerTest, SaveTeachPoint) {
   EXPECT_EQ( 30, m_controller.curve(ROLL    ).target());
   EXPECT_EQ( 15, m_controller.curve(PITCH   ).target());
   EXPECT_EQ(-20, m_controller.curve(WRIST   ).target());
+  EXPECT_EQ( 70, m_controller.curve(GRIPPER ).target());
 }
 
 TEST_F(ControllerTest, PrintDefaultTeachPoint) {
-  EXPECT_CALL(m_controller, reportTeachPoint(0, 0, 0, 0, 0, 0));
+  EXPECT_CALL(m_controller, reportTeachPoint(0, 0, 0, 0, 0, 0, 0));
   send("da");
 }
 
 TEST_F(ControllerTest, PrintTeachPoint) {
-  EXPECT_CALL(m_controller, reportTeachPoint(45, -10, 20, 30, 15, -20));
+  EXPECT_CALL(m_controller, reportTeachPoint(45, -10, 20, 30, 15, -20, 70));
   send("mbdb");
 }
 
@@ -557,6 +573,7 @@ TEST_F(ControllerTest, SaveSecondTeachPoint) {
   EXPECT_EQ(0, m_controller.curve(ROLL    ).target());
   EXPECT_EQ(0, m_controller.curve(PITCH   ).target());
   EXPECT_EQ(0, m_controller.curve(WRIST   ).target());
+  EXPECT_EQ(0, m_controller.curve(GRIPPER ).target());
 }
 
 TEST_F(ControllerTest, SynchroniseProfilesWithBase) {
@@ -570,6 +587,7 @@ TEST_F(ControllerTest, SynchroniseProfilesWithBase) {
   EXPECT_FLOAT_EQ(time, m_controller.curve(ROLL    ).timeRemaining());
   EXPECT_FLOAT_EQ(time, m_controller.curve(PITCH   ).timeRemaining());
   EXPECT_FLOAT_EQ(time, m_controller.curve(WRIST   ).timeRemaining());
+  EXPECT_FLOAT_EQ(time, m_controller.curve(GRIPPER ).timeRemaining());
 }
 
 TEST_F(ControllerTest, SynchroniseProfilesWithShoulder) {
@@ -583,16 +601,18 @@ TEST_F(ControllerTest, SynchroniseProfilesWithShoulder) {
   EXPECT_FLOAT_EQ(time, m_controller.curve(ROLL    ).timeRemaining());
   EXPECT_FLOAT_EQ(time, m_controller.curve(PITCH   ).timeRemaining());
   EXPECT_FLOAT_EQ(time, m_controller.curve(WRIST   ).timeRemaining());
+  EXPECT_FLOAT_EQ(time, m_controller.curve(GRIPPER ).timeRemaining());
 }
 
 TEST_F(ControllerTest, TargetConfiguration) {
-  send("2 3 5 7 11 13c");
+  send("2 3 5 7 11 13 17c");
   EXPECT_EQ( 2, m_controller.curve(BASE    ).target());
   EXPECT_EQ( 3, m_controller.curve(SHOULDER).target());
   EXPECT_EQ( 5, m_controller.curve(ELBOW   ).target());
   EXPECT_EQ( 7, m_controller.curve(ROLL    ).target());
   EXPECT_EQ(11, m_controller.curve(PITCH   ).target());
   EXPECT_EQ(13, m_controller.curve(WRIST   ).target());
+  EXPECT_EQ(17, m_controller.curve(GRIPPER ).target());
 }
 
 TEST_F(ControllerTest, IgnoreSuperfluous) {
@@ -603,6 +623,7 @@ TEST_F(ControllerTest, IgnoreSuperfluous) {
   EXPECT_EQ( 7, m_controller.curve(ROLL    ).target());
   EXPECT_EQ(11, m_controller.curve(PITCH   ).target());
   EXPECT_EQ(13, m_controller.curve(WRIST   ).target());
+  EXPECT_EQ(17, m_controller.curve(GRIPPER ).target());
 }
 
 TEST_F(ControllerTest, MultipleConfigurations) {
@@ -613,6 +634,7 @@ TEST_F(ControllerTest, MultipleConfigurations) {
   EXPECT_EQ(0, m_controller.curve(ROLL    ).target());
   EXPECT_EQ(0, m_controller.curve(PITCH   ).target());
   EXPECT_EQ(0, m_controller.curve(WRIST   ).target());
+  EXPECT_EQ(0, m_controller.curve(GRIPPER ).target());
 }
 
 TEST_F(ControllerTest, ConfigurationBoundValues) {
@@ -628,21 +650,22 @@ TEST_F(ControllerTest, ClearConfiguration) {
   EXPECT_EQ(0, m_controller.curve(ROLL    ).target());
   EXPECT_EQ(0, m_controller.curve(PITCH   ).target());
   EXPECT_EQ(0, m_controller.curve(WRIST   ).target());
+  EXPECT_EQ(0, m_controller.curve(GRIPPER ).target());
 }
 
 TEST_F(ControllerTest, ZeroTimeRequired) {
   EXPECT_CALL(m_controller, reportRequired(0));
-  send("45 -10 20 30 15 -20t");
+  send("45 -10 20 30 15 -20 70t");
 }
 
 TEST_F(ControllerTest, NonZeroTimeRequired) {
   EXPECT_CALL(m_controller, reportRequired(Gt(0)));
-  send("50 -10 20 30 15 -20t");
+  send("50 -10 20 30 15 -20 70t");
 }
 
 TEST_F(ControllerTest, ReportingTimeRequiredClearsNumber) {
   EXPECT_CALL(m_controller, reportRequired(0));
-  send("45 -10 20 30 15 -20t0c");
+  send("45 -10 20 30 15 -20 70t0c");
   EXPECT_EQ(0, m_controller.curve(BASE).target());
 }
 
@@ -668,30 +691,30 @@ TEST_F(ControllerTest, ShoulderDriveNotReady) {
 }
 
 TEST_F(ControllerTest, ReportConfiguration) {
-  EXPECT_CALL(m_controller, reportConfiguration(45, -10, 20, 30, 15, -20));
+  EXPECT_CALL(m_controller, reportConfiguration(45, -10, 20, 30, 15, -20, 70));
   send("c");
 }
 
 TEST_F(ControllerTest, ReportLowerLimits) {
   float lower = -79.666667f;
-  EXPECT_CALL(m_controller, reportLower(lower, lower, lower, lower, lower, lower));
+  EXPECT_CALL(m_controller, reportLower(lower, lower, lower, lower, lower, lower, lower));
   send("l");
 }
 
 TEST_F(ControllerTest, ReportingLowerLimitsClearsNumber) {
-  EXPECT_CALL(m_controller, reportLower(_, _, _, _, _, _));
+  EXPECT_CALL(m_controller, reportLower(_, _, _, _, _, _, _));
   EXPECT_CALL(m_controller, reportAngle(_));
   send("0lb");
 }
 
 TEST_F(ControllerTest, ReportUpperLimits) {
   float upper = 75.0f;
-  EXPECT_CALL(m_controller, reportUpper(upper, upper, upper, upper, upper, upper));
+  EXPECT_CALL(m_controller, reportUpper(upper, upper, upper, upper, upper, upper, upper));
   send("u");
 }
 
 TEST_F(ControllerTest, ReportingUpperLimitsClearsNumber) {
-  EXPECT_CALL(m_controller, reportUpper(_, _, _, _, _, _));
+  EXPECT_CALL(m_controller, reportUpper(_, _, _, _, _, _, _));
   EXPECT_CALL(m_controller, reportAngle(_));
   send("0ub");
 }
