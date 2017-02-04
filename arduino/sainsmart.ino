@@ -41,7 +41,7 @@ public:
   void reportPWM(int pwm) {
     reportInteger(pwm);
   }
-  void reportConfiguration(float base, float shoulder, float elbow, float roll, float pitch, float wrist) {
+  void reportConfiguration(float base, float shoulder, float elbow, float roll, float pitch, float wrist, float gripper) {
     Serial.print(base);
     Serial.write(" ");
     Serial.print(shoulder);
@@ -53,16 +53,18 @@ public:
     Serial.print(pitch);
     Serial.write(" ");
     Serial.print(wrist);
+    Serial.write(" ");
+    Serial.print(gripper);
     Serial.write("\r\n");
   }
-  void reportLower(float base, float shoulder, float elbow, float roll, float pitch, float wrist) {
-    reportConfiguration(base, shoulder, elbow, roll, pitch, wrist);
+  void reportLower(float base, float shoulder, float elbow, float roll, float pitch, float wrist, float gripper) {
+    reportConfiguration(base, shoulder, elbow, roll, pitch, wrist, gripper);
   }
-  void reportUpper(float base, float shoulder, float elbow, float roll, float pitch, float wrist) {
-    reportConfiguration(base, shoulder, elbow, roll, pitch, wrist);
+  void reportUpper(float base, float shoulder, float elbow, float roll, float pitch, float wrist, float gripper) {
+    reportConfiguration(base, shoulder, elbow, roll, pitch, wrist, gripper);
   }
-  void reportTeachPoint(float base, float shoulder, float elbow, float roll, float pitch, float wrist) {
-    reportConfiguration(base, shoulder, elbow, roll, pitch, wrist);
+  void reportTeachPoint(float base, float shoulder, float elbow, float roll, float pitch, float wrist, float gripper) {
+    reportConfiguration(base, shoulder, elbow, roll, pitch, wrist, gripper);
   }
   void writePWM(int drive, int pwm) {
     m_servo[drive].writeMicroseconds(pwm);
