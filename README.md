@@ -2,9 +2,9 @@
 
 [Arduino][1] software to steer the SainSmart [DIY 6-axis palletizing robot arm][2] and [Sunfounder Rollpaw gripper][15] using smooth Bernstein polynomials.
 
-## equipment
-
 [![SainSmart 6-axis servo steering](https://i1.ytimg.com/vi/Vz9hG3jYO3k/hqdefault.jpg)][vid]
+
+## equipment
 
 [![SainsSmart 6-axis robot arm](6axis-size.jpg)][2]
 
@@ -22,7 +22,7 @@
 
 [![Sunfounder Rollpaw gripper](rollpaw.jpg)][15]
 
-## build
+## software build
 
 Install the dependencies as follows:
 
@@ -47,7 +47,7 @@ make
 Note: You might have to change the *BOARD_TAG* in the *arduino/Makefile*.
 See */usr/share/arduino/hardware/arduino/boards.txt* for supported board tags.
 
-## test
+## software test
 
 You can also build and run the tests on the *PC* using the check target:
 
