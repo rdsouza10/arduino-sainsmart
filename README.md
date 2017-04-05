@@ -1,10 +1,10 @@
 # arduino-sainsmart[![](https://img.shields.io/circleci/project/wedesoft/arduino-sainsmart/master.png)](https://circleci.com/gh/wedesoft/arduino-sainsmart)
 
-[Arduino][1] software to steer the SainSmart [DIY 6-axis palletizing robot arm][2] using smooth Bernstein polynomials.
+[Arduino][1] software to steer the SainSmart [DIY 6-axis palletizing robot arm][2] and [Sunfounder Rollpaw gripper][15] using smooth Bernstein polynomials.
 
 ## equipment
 
-[![SainSmart 6-axis servo steering](https://i1.ytimg.com/vi/_QJ1kuwu9l4/hqdefault.jpg)][vid]
+[![SainSmart 6-axis servo steering](https://i1.ytimg.com/vi/Vz9hG3jYO3k/hqdefault.jpg)][vid]
 
 [![SainsSmart 6-axis robot arm](6axis-size.jpg)][2]
 
@@ -19,6 +19,8 @@
 [![2.1 x 5.5mm DC Socket](dc-socket.jpg)][10]
 
 [![JR Servo Extension Wire](jr-servo-wire.jpg)][17]
+
+[![Sunfounder Rollpaw gripper](rollpaw.jpg)][15]
 
 ## build
 
@@ -154,4 +156,4 @@ Thanks to Ian Patient for pointing out the Bernstein polynomials for achieving s
 [15]: https://www.sunfounder.com/rollpaw.html
 [16]: https://www.sunfounder.com/learn/category/Standard-Gripper-Kit-Rollpaw.html
 [17]: https://www.amazon.co.uk/d/B00P1716VO
-[vid]: https://www.youtube.com/watch?v=_QJ1kuwu9l4
+[vid]: https://www.youtube.com/watch?v=Vz9hG3jYO3k
